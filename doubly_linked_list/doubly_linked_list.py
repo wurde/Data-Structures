@@ -118,15 +118,19 @@ class DoublyLinkedList:
   """Removes the input node from its current spot in the 
   List and inserts it as the new head node of the List."""
   def move_to_front(self, node):
+    if self.tail == node:
+      self.tail = node.prev
+
     self.delete(node)
-    print(f"move_to_front:{node.value}")
     self.add_to_head(node.value)
 
   """Removes the input node from its current spot in the 
   List and inserts it as the new tail node of the List."""
   def move_to_end(self, node):
+    if self.head == node:
+      self.head = node.next
+
     self.delete(node)
-    print(f"move_to_end:{node.value}")
     self.add_to_tail(node.value)
 
   """Removes a node from the list and handles cases where
