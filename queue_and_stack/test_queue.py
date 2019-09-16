@@ -3,7 +3,7 @@
 #
 
 import unittest
-from queue import Queue
+from dll_queue import Queue
 
 #
 # Define assertions
