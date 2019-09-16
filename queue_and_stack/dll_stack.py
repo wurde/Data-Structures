@@ -17,12 +17,12 @@ class Stack:
     self.storage = DoublyLinkedList()
 
   def push(self, value):
-    self.storage.append(value)
+    self.storage.add_to_head(value)
   
   def pop(self):
     if self.len() == 0:
       return None
-    return self.storage.pop()
+    return self.storage.remove_from_head()
 
   def len(self):
     return len(self.storage)
