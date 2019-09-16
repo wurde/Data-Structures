@@ -1,3 +1,7 @@
+#
+# Define data structure
+#
+
 class Heap:
   def __init__(self):
     self.storage = []

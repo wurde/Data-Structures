@@ -1,6 +1,14 @@
+#
+# Dependencies
+#
+
 import unittest
 from unittest.mock import MagicMock
 from generic_heap import Heap
+
+#
+# Define assertions
+#
 
 class HeapTests(unittest.TestCase):
   def setUp(self):
@@ -145,6 +153,10 @@ class HeapTests(unittest.TestCase):
     self.heap.insert(11)
     self.heap.delete()
     self.assertTrue(self.heap._sift_down.called)
+
+#
+# Run assertions
+#
 
 if __name__ == '__main__':
   unittest.main()

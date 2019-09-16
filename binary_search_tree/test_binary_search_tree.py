@@ -1,6 +1,14 @@
+#
+# Dependencies
+#
+
 import unittest
 import random
 from binary_search_tree import BinarySearchTree
+
+#
+# Define assertions
+#
 
 class BinarySearchTreeTests(unittest.TestCase):
   def setUp(self):
@@ -54,6 +62,9 @@ class BinarySearchTreeTests(unittest.TestCase):
     self.assertTrue(v4 in arr)
     self.assertTrue(v5 in arr)
 
+#
+# Run assertions
+#
 
 if __name__ == '__main__':
   unittest.main()
