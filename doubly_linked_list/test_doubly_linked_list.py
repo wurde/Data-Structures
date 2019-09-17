@@ -1,6 +1,14 @@
+#
+# Dependencies
+#
+
 import unittest
 from doubly_linked_list import ListNode
 from doubly_linked_list import DoublyLinkedList
+
+#
+# Define assertions
+#
 
 class DoublyLinkedListTests(unittest.TestCase):
   def setUp(self):
@@ -125,7 +133,7 @@ class DoublyLinkedListTests(unittest.TestCase):
     self.assertIsNone(self.dll.head)
     self.assertIsNone(self.dll.tail)
     self.assertEqual(len(self.dll), 0)
-
+    
     self.dll.add_to_tail(1)
     self.dll.add_to_head(9)
     self.dll.add_to_tail(6)
@@ -148,6 +156,10 @@ class DoublyLinkedListTests(unittest.TestCase):
     self.assertEqual(self.dll.get_max(), 100)
     self.dll.add_to_tail(101)
     self.assertEqual(self.dll.get_max(), 101)
+
+#
+# Run assertions
+#
 
 if __name__ == '__main__':
   unittest.main()

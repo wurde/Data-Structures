@@ -1,5 +1,13 @@
+#
+# Dependencies
+#
+
 import unittest
-from queue import Queue
+from dll_queue import Queue
+
+#
+# Define assertions
+#
 
 class QueueTests(unittest.TestCase):
   def setUp(self):
@@ -40,8 +48,9 @@ class QueueTests(unittest.TestCase):
     self.assertIsNone(self.q.dequeue())
     self.assertEqual(self.q.len(), 0)
 
+#
+# Run assertions
+#
+
 if __name__ == '__main__':
   unittest.main()
-
-
-    

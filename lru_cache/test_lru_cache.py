@@ -1,5 +1,13 @@
+#
+# Dependencies
+#
+
 import unittest
 from lru_cache import LRUCache 
+
+#
+# Define assertions
+#
 
 class CacheTests(unittest.TestCase):
   def setUp(self):
@@ -31,6 +39,9 @@ class CacheTests(unittest.TestCase):
   def test_cache_nonexistent_retrieval(self):
     self.assertIsNone(self.cache.get('nonexistent'))
 
+#
+# Run assertions
+#
 
 if __name__ == '__main__':
   unittest.main()

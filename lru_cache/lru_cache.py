@@ -1,3 +1,7 @@
+#
+# Define data structure
+#
+
 class LRUCache:
   """
   Our LRUCache class keeps track of the max number of nodes it

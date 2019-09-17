@@ -1,6 +1,14 @@
+#
+# Dependencies
+#
+
 import unittest
 from avl_tree import AVLTree
 from avl_tree import Node
+
+#
+# Define assertions
+#
 
 class AVLTreeTests(unittest.TestCase):
   def setUp(self):
@@ -99,6 +107,10 @@ class AVLTreeTests(unittest.TestCase):
     self.assertEqual(self.tree.node.right.node.key, 7)
     self.assertEqual(self.tree.node.right.node.left.node.key, 6)
     self.assertEqual(self.tree.node.right.node.right.node.key, 8) 
+
+#
+# Run assertions
+#
 
 if __name__ == '__main__':
   unittest.main()
