@@ -12,7 +12,7 @@ class LRUCache:
   """
   def __init__(self, limit=10):
     self.maxCount = limit
-    # current node count
+    self.currentCount = 0
     # entries = DoublyLinkedList
     # storage = {}
     pass
