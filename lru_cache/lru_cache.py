@@ -1,4 +1,10 @@
 #
+# Dependencies
+#
+
+from doubly_linked_list import DoublyLinkedList
+
+#
 # Define data structure
 #
 
@@ -13,7 +19,7 @@ class LRUCache:
   def __init__(self, limit=10):
     self.maxCount = limit
     self.currentCount = 0
-    # entries = DoublyLinkedList
+    self.entries = DoublyLinkedList()
     # storage = {}
     pass
 
