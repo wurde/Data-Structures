@@ -11,6 +11,10 @@ class LRUCache:
   to every node stored in the cache.
   """
   def __init__(self, limit=10):
+    self.maxCount = limit
+    # current node count
+    # entries = DoublyLinkedList
+    # storage = {}
     pass
 
   """
