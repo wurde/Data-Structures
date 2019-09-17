@@ -3,6 +3,7 @@
 #
 
 from doubly_linked_list import DoublyLinkedList
+from doubly_linked_list import ListNode
 
 #
 # Define data structure
@@ -31,7 +32,9 @@ class LRUCache:
   """
   def get(self, key):
       if key in self.storage:
-          return self.storage[key]
+          # TODO set pair as 'most-recently used'
+          # self.entries.move_to_front(self.storage[key])
+          return self.storage[key].value
       else:
           return None
 
@@ -46,4 +49,11 @@ class LRUCache:
   the newly-specified value. 
   """
   def set(self, key, value):
-      self.storage[key] = value
+      if self.currentCount > self.maxCount:
+          del self.storage[key]
+          self.entries.remove_from_tail()
+
+      node = ListNode(value, None, None)
+      self.entries.add_to_head(node)
+      self.storage[key] = node
+      self.currentCount = len(self.entries)
