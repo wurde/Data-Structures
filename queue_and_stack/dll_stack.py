@@ -21,7 +21,7 @@ class Stack:
     
     def pop(self):
         if self.len() == 0:
-        return None
+            return None
         return self.storage.remove_from_head()
 
     def len(self):
