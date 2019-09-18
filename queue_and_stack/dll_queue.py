@@ -12,17 +12,17 @@ from doubly_linked_list import DoublyLinkedList
 #
 
 class Queue:
-  def __init__(self):
-    self.size = 0
-    self.storage = DoublyLinkedList()
+    def __init__(self):
+        self.size = 0
+        self.storage = DoublyLinkedList()
 
-  def enqueue(self, value):
-    self.storage.add_to_head(value)
-  
-  def dequeue(self):
-    if self.len() == 0:
-      return None
-    return self.storage.remove_from_tail()
+    def enqueue(self, value):
+        self.storage.add_to_head(value)
+    
+    def dequeue(self):
+        if self.len() == 0:
+            return None
+        return self.storage.remove_from_tail()
 
-  def len(self):
-    return len(self.storage)
+    def len(self):
+        return len(self.storage)
