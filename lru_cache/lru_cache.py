@@ -34,6 +34,7 @@ class LRUCache:
   """
   def get(self, key):
       if key in self.storage:
+          self.entries.move_to_front(self.entries.tail)
           return self.storage[key]
       else:
           return None
@@ -49,12 +50,14 @@ class LRUCache:
   the newly-specified value.
   """
   def set(self, key, value):
-      print(f"self.entries:{self.entries},{self.entries.length}")
+      if key in self.storage:
+          self.storage[key] = value
+          return
+
       if self.currentCount >= self.maxCount:
-          if key in self.storage:
-              del self.storage[key]
+          del self.storage[self.entries.tail.value]
           self.entries.remove_from_tail()
 
-      self.entries.add_to_head(value)
+      self.entries.add_to_head(key)
       self.storage[key] = value
       self.currentCount += 1
