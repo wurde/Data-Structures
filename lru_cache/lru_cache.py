@@ -2,8 +2,10 @@
 # Dependencies
 #
 
+import os
+import sys
+sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../doubly_linked_list'))
 from doubly_linked_list import DoublyLinkedList
-from doubly_linked_list import ListNode
 
 #
 # Define data structure
@@ -32,9 +34,7 @@ class LRUCache:
   """
   def get(self, key):
       if key in self.storage:
-          # TODO set pair as 'most-recently used'
-          # self.entries.move_to_front(self.storage[key])
-          return self.storage[key].value
+          return self.storage[key]
       else:
           return None
 
@@ -46,14 +46,15 @@ class LRUCache:
   cache needs to be removed to make room. Additionally, in the
   case that the key already exists in the cache, we simply 
   want to overwrite the old value associated with the key with
-  the newly-specified value. 
+  the newly-specified value.
   """
   def set(self, key, value):
-      if self.currentCount > self.maxCount:
-          del self.storage[key]
+      print(f"self.entries:{self.entries},{self.entries.length}")
+      if self.currentCount >= self.maxCount:
+          if key in self.storage:
+              del self.storage[key]
           self.entries.remove_from_tail()
 
-      node = ListNode(value, None, None)
-      self.entries.add_to_head(node)
-      self.storage[key] = node
-      self.currentCount = len(self.entries)
+      self.entries.add_to_head(value)
+      self.storage[key] = value
+      self.currentCount += 1
