@@ -1,4 +1,13 @@
 #
+# Dependencies
+#
+
+import os
+import sys
+sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../doubly_linked_list'))
+from doubly_linked_list import DoublyLinkedList
+
+#
 # Define data structure
 #
 
@@ -11,7 +20,10 @@ class LRUCache:
   to every node stored in the cache.
   """
   def __init__(self, limit=10):
-    pass
+      self.maxCount = limit
+      self.currentCount = 0
+      self.entries = DoublyLinkedList()
+      self.storage = {}
 
   """
   Retrieves the value associated with the given key. Also
@@ -21,7 +33,11 @@ class LRUCache:
   key-value pair doesn't exist in the cache. 
   """
   def get(self, key):
-    pass
+      if key in self.storage:
+          self.entries.move_to_front(self.entries.tail)
+          return self.storage[key]
+      else:
+          return None
 
   """
   Adds the given key-value pair to the cache. The newly-
@@ -31,7 +47,17 @@ class LRUCache:
   cache needs to be removed to make room. Additionally, in the
   case that the key already exists in the cache, we simply 
   want to overwrite the old value associated with the key with
-  the newly-specified value. 
+  the newly-specified value.
   """
   def set(self, key, value):
-    pass
+      if key in self.storage:
+          self.storage[key] = value
+          return
+
+      if self.currentCount >= self.maxCount:
+          del self.storage[self.entries.tail.value]
+          self.entries.remove_from_tail()
+
+      self.entries.add_to_head(key)
+      self.storage[key] = value
+      self.currentCount += 1
