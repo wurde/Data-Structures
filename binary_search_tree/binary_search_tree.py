@@ -76,6 +76,18 @@ class BinarySearchTree:
             else:
                 focusNode = focusNode.right
 
-    def for_each(self, cb):
-        # TODO run callback on all nodes.
-        pass
+    def for_each(self, cb, node=None):
+        if node is None:
+            cb(self.value)
+
+            if self.left:
+                self.for_each(cb, self.left)
+            if self.right:
+                self.for_each(cb, self.right)
+        else:
+            cb(node.value)
+
+            if node.left:
+                self.for_each(cb, node.left)
+            if node.right:
+                self.for_each(cb, node.right)
