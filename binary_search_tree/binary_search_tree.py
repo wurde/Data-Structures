@@ -12,16 +12,6 @@ from dll_stack import Stack
 # Define data structure
 #
 
-class Node:
-    def __init__(self, value, left=None, right=None):
-        self.value = value
-        self.left = left
-        self.right = right
-
-#
-# Define data structure
-#
-
 class BinarySearchTree:
     def __init__(self, value):
         self.value = value
@@ -30,7 +20,7 @@ class BinarySearchTree:
 
     def insert(self, value):
         if self.value is None:
-            self.value = Node(value)
+            self.value = BinarySearchTree(value)
             return
 
         focusNode = self
@@ -40,14 +30,14 @@ class BinarySearchTree:
 
             if value < focusNode.value:
                 if focusNode.left is None:
-                    focusNode.left = Node(value)
+                    focusNode.left = BinarySearchTree(value)
                     return
                 else:
                     focusNode = focusNode.left
 
             if value > focusNode.value:
                 if focusNode.right is None:
-                    focusNode.right = Node(value)
+                    focusNode.right = BinarySearchTree(value)
                     return
                 else:
                     focusNode = focusNode.right
@@ -76,18 +66,10 @@ class BinarySearchTree:
             else:
                 focusNode = focusNode.right
 
-    def for_each(self, cb, node=None):
-        if node is None:
-            cb(self.value)
+    def for_each(self, cb):
+        cb(self.value)
 
-            if self.left:
-                self.for_each(cb, self.left)
-            if self.right:
-                self.for_each(cb, self.right)
-        else:
-            cb(node.value)
-
-            if node.left:
-                self.for_each(cb, node.left)
-            if node.right:
-                self.for_each(cb, node.right)
+        if self.left:
+            self.left.for_each(cb)
+        if self.right:
+            self.right.for_each(cb)
