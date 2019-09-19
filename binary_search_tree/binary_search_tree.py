@@ -66,8 +66,15 @@ class BinarySearchTree:
         return False
 
     def get_max(self):
-        # TODO return the max value.
-        pass
+        focusNode = self
+
+        while True:
+            maxValue = focusNode.value
+
+            if focusNode.right is None:
+                return maxValue
+            else:
+                focusNode = focusNode.right
 
     def for_each(self, cb):
         # TODO run callback on all nodes.
