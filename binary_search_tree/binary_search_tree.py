@@ -53,8 +53,17 @@ class BinarySearchTree:
                     focusNode = focusNode.right
 
     def contains(self, target):
-        # TODO check if target exists.
-        pass
+        focusNode = self
+
+        while focusNode is not None:
+            if target == focusNode.value:
+                return True
+            elif target < focusNode.value:
+                focusNode = focusNode.left
+            else:
+                focusNode = focusNode.right
+        
+        return False
 
     def get_max(self):
         # TODO return the max value.
