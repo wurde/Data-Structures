@@ -33,11 +33,11 @@ class BinarySearchTree:
             self.value = Node(value)
             return
 
-        if self.value == value:
-            return
-
         focusNode = self
         while True:
+            if value == focusNode.value:
+                return
+
             if value < focusNode.value:
                 if focusNode.left is None:
                     focusNode.left = Node(value)
