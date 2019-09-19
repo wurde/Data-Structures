@@ -12,6 +12,16 @@ from dll_stack import Stack
 # Define data structure
 #
 
+class Node:
+    def __init__(self, value, left=None, right=None):
+        self.value = value
+        self.left = left
+        self.right = right
+
+#
+# Define data structure
+#
+
 class BinarySearchTree:
     def __init__(self, value):
         self.value = value
@@ -19,19 +29,28 @@ class BinarySearchTree:
         self.right = None
 
     def insert(self, value):
-        if self.value:
-            if value < self.value:
-                if self.left is None:
-                    self.left = Node(value)
+        if self.value is None:
+            self.value = Node(value)
+            return
+
+        if self.value == value:
+            return
+
+        focusNode = self
+        while True:
+            if value < focusNode.value:
+                if focusNode.left is None:
+                    focusNode.left = Node(value)
+                    return
                 else:
-                    self.left.insert(value)
-            elif value > self.value:
-                if self.right is None:
-                    self.right = Node(value)
+                    focusNode = focusNode.left
+
+            if value > focusNode.value:
+                if focusNode.right is None:
+                    focusNode.right = Node(value)
+                    return
                 else:
-                    self.right.insert(value)
-        else:
-            self.value = value
+                    focusNode = focusNode.right
 
     def contains(self, target):
         # TODO check if target exists.
