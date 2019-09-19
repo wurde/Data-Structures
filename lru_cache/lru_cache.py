@@ -57,6 +57,7 @@ class LRUCache:
       if self.currentCount >= self.maxCount:
           del self.storage[self.entries.tail.value]
           self.entries.remove_from_tail()
+          self.currentCount -= 1
 
       self.entries.add_to_head(key)
       self.storage[key] = value
